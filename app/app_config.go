@@ -54,8 +54,11 @@ import (
 	"google.golang.org/protobuf/types/known/durationpb"
 
 	chainmodulev1 "github.com/1571896045/chain/api/chain/chain/module"
+	imgnftmodulev1 "github.com/1571896045/chain/api/chain/imgnft/module"
 	_ "github.com/1571896045/chain/x/chain/module" // import for side-effects
 	chainmoduletypes "github.com/1571896045/chain/x/chain/types"
+	_ "github.com/1571896045/chain/x/imgnft/module" // import for side-effects
+	imgnftmoduletypes "github.com/1571896045/chain/x/imgnft/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
@@ -94,6 +97,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		chainmoduletypes.ModuleName,
+		imgnftmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -119,6 +123,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		chainmoduletypes.ModuleName,
+		imgnftmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -138,6 +143,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		chainmoduletypes.ModuleName,
+		imgnftmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -296,6 +302,10 @@ var (
 			{
 				Name:   chainmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&chainmodulev1.Module{}),
+			},
+			{
+				Name:   imgnftmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&imgnftmodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},

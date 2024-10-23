@@ -1,0 +1,17 @@
+syntax = "proto3";
+package chain.imgnft;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "chain/imgnft/params.proto";
+
+option go_package = "github.com/1571896045/chain/x/imgnft/types";
+
+// GenesisState defines the imgnft module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
