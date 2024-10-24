@@ -59,7 +59,10 @@ import (
 	chainmoduletypes "github.com/1571896045/chain/x/chain/types"
 	_ "github.com/1571896045/chain/x/imgnft/module" // import for side-effects
 	imgnftmoduletypes "github.com/1571896045/chain/x/imgnft/types"
-	// this line is used by starport scaffolding # stargate/app/moduleImport
+	mynftmodulev1 "github.com/1571896045/chain/api/chain/mynft/module"
+_ "github.com/1571896045/chain/x/mynft/module" // import for side-effects
+mynftmoduletypes "github.com/1571896045/chain/x/mynft/types"
+// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
 var (
@@ -98,7 +101,8 @@ var (
 		// chain modules
 		chainmoduletypes.ModuleName,
 		imgnftmoduletypes.ModuleName,
-		// this line is used by starport scaffolding # stargate/app/initGenesis
+		mynftmoduletypes.ModuleName,
+// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -124,7 +128,8 @@ var (
 		// chain modules
 		chainmoduletypes.ModuleName,
 		imgnftmoduletypes.ModuleName,
-		// this line is used by starport scaffolding # stargate/app/beginBlockers
+		mynftmoduletypes.ModuleName,
+// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
 	endBlockers = []string{
@@ -144,7 +149,8 @@ var (
 		// chain modules
 		chainmoduletypes.ModuleName,
 		imgnftmoduletypes.ModuleName,
-		// this line is used by starport scaffolding # stargate/app/endBlockers
+		mynftmoduletypes.ModuleName,
+// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
 	preBlockers = []string{
@@ -307,7 +313,11 @@ var (
 				Name:   imgnftmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&imgnftmodulev1.Module{}),
 			},
-			// this line is used by starport scaffolding # stargate/app/moduleConfig
+			{
+				Name:   mynftmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&mynftmodulev1.Module{}),
+			},
+// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},
 	})
 )

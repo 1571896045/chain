@@ -78,7 +78,8 @@ import (
 	chainmodulekeeper "github.com/1571896045/chain/x/chain/keeper"
 	imgnftmodulekeeper "github.com/1571896045/chain/x/imgnft/keeper"
 
-	// this line is used by starport scaffolding # stargate/app/moduleImport
+	mynftmodulekeeper "github.com/1571896045/chain/x/mynft/keeper"
+// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	"github.com/1571896045/chain/docs"
 )
@@ -145,7 +146,8 @@ type App struct {
 
 	ChainKeeper  chainmodulekeeper.Keeper
 	ImgnftKeeper imgnftmodulekeeper.Keeper
-	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
+	MynftKeeper mynftmodulekeeper.Keeper
+// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
 	sm *module.SimulationManager
@@ -250,6 +252,7 @@ func New(
 		&app.CircuitBreakerKeeper,
 		&app.ChainKeeper,
 		&app.ImgnftKeeper,
+		&app.MynftKeeper,
 		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 	); err != nil {
 		panic(err)
